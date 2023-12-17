@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://c351vawc857la"
+path="res://.godot/imported/Intro-Sensei.dialogue-04482788eeb4f6836d898cf3afec6ac5.tres"
+
+[deps]
+
+source_file="res://Resources/Dialogues/Intro-Sensei.dialogue"
+dest_files=["res://.godot/imported/Intro-Sensei.dialogue-04482788eeb4f6836d898cf3afec6ac5.tres"]
+
+[params]
+
+defaults=true

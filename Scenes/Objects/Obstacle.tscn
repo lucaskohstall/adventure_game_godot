@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdalqrs2wfjln"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/Obstacle.gd" id="1_71cum"]
+[ext_resource type="Texture2D" uid="uid://cwtsa17efibbl" path="res://Resources/Tilesets/Basic Grass Biom things 1.png" id="2_xceog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgtsp"]
+size = Vector2(32, 20)
+
+[node name="Obstacle" type="StaticBody2D"]
+script = ExtResource("1_71cum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_jgtsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20.5, 0)
+texture = ExtResource("2_xceog")
+region_enabled = true
+region_rect = Rect2(32, 64, 40, 16)

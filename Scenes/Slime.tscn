@@ -1,0 +1,202 @@
+[gd_scene load_steps=24 format=3 uid="uid://dapreqrc05whn"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_akqrp"]
+[ext_resource type="Shader" path="res://Shader/White-Blink.gdshader" id="2_r6ccd"]
+[ext_resource type="Texture2D" uid="uid://ctjc32kad5inj" path="res://Resources/Sprites/survivalgame-enemy-slime.png" id="2_yfmdp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfn1o"]
+shader = ExtResource("2_r6ccd")
+shader_parameter/hit_opacity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8nmt"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in0de"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uggls"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhxx6"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp2pp"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eevpj"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvtj6"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj47i"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brxqa"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2egd"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w8kn"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmgej"]
+atlas = ExtResource("2_yfmdp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcdfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8nmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in0de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uggls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhxx6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp2pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eevpj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvtj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj47i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brxqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2egd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w8kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmgej")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu52o"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mrjf6"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6klm"]
+radius = 124.145
+
+[sub_resource type="Animation" id="Animation_hv0yo"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_w1utf"]
+resource_name = "hit_flash"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krt0k"]
+_data = {
+"RESET": SubResource("Animation_hv0yo"),
+"hit_flash": SubResource("Animation_w1utf")
+}
+
+[node name="Slime" type="CharacterBody2D"]
+platform_floor_layers = 0
+script = ExtResource("1_akqrp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_kfn1o")
+sprite_frames = SubResource("SpriteFrames_kcdfo")
+animation = &"death"
+
+[node name="Area2D-Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-Hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_eu52o")
+
+[node name="Timer-Damage" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_mrjf6")
+
+[node name="Area2D-SeekArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D-SeekArea"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_h6klm")
+
+[node name="DamageBlink" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_krt0k")
+}
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D-Hitbox" to="." method="_hitbox_area_entered"]
+[connection signal="area_exited" from="Area2D-Hitbox" to="." method="_hitbox_area_exited"]
+[connection signal="body_entered" from="Area2D-Hitbox" to="." method="_hitbox_body_entered"]
+[connection signal="body_exited" from="Area2D-Hitbox" to="." method="_hitbox_body_exited"]
+[connection signal="timeout" from="Timer-Damage" to="." method="_on_timer_damage_timeout"]
+[connection signal="body_entered" from="Area2D-SeekArea" to="." method="_on_area_2d_seek_area_body_entered"]
+[connection signal="body_exited" from="Area2D-SeekArea" to="." method="_on_area_2d_seek_area_body_exited"]

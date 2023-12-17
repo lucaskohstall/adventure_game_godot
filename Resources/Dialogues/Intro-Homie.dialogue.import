@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://wvv5p4uqcje2"
+path="res://.godot/imported/Intro-Homie.dialogue-261452cff413db812450c22a695e0f62.tres"
+
+[deps]
+
+source_file="res://Resources/Dialogues/Intro-Homie.dialogue"
+dest_files=["res://.godot/imported/Intro-Homie.dialogue-261452cff413db812450c22a695e0f62.tres"]
+
+[params]
+
+defaults=true
